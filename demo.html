@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>change NTD</title>
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <body >
+        <div>
+            <h4 class="title">匯率轉換工具</h4>
+            <!--先設計一個輸入蘭為取得使用者要輸入的值-->
+            <label id="input">請輸入要轉換的新台幣(元)</label>
+            <input id="NTD" type="text" placeholder="100" value="">
+
+            <!--建立一個 changeMoney按鈕 來觸發script loadChangeDoc()函數-->
+            <button id="Submit" class="submit" type="button" value="submit" onclick="changeMoney()">change Money</button>
+
+            <!--建立一個 reset按鈕 來進行重新一次的計算-->
+            <button id="reset" class="reset" type="reset" value="reset" onclick="history.go(0)">reset</button>
+
+
+            <hr id="line" size="3" color="black">
+
+            <br>
+            轉換結果:
+            <div id="show">
+                <p class = 'summary'></ul></p>
+            </div>
+            
+
+            
+        </div>
+
+        <script>
+            var summary = document.querySelector('.summary');
+
+            function changeMoney(){
+                var result =''; //儲存計算匯率結果
+                
+                var changeToUSD = parseInt(document.getElementById('NTD').value)*30.92;
+                changeToUSD = changeToUSD.toFixed(2);   //只需要計算到小數點第二位就好
+                var changeToEUR = parseInt(document.getElementById('NTD').value)*33.42;
+                changeToEUR = changeToEUR.toFixed(2);
+                var changeToJPY = parseInt(document.getElementById('NTD').value)*0.2218;
+                changeToJPY = changeToJPY.toFixed(2);
+                var changeToKRW = parseInt(document.getElementById('NTD').value)*0.02535;
+                changeToKRW = changeToKRW.toFixed(2);
+                var changeToAUD = parseInt(document.getElementById('NTD').value)*20.42;
+                changeToAUD = changeToAUD.toFixed(2);
+
+                result = '美金: '+changeToUSD + '歐元: '+ changeToEUR +'日幣: '+ 
+                            changeToJPY+ '韓元: '+changeToKRW+ '澳幣: '+ changeToAUD;
+                
+                summary.innerHTML = result;
+            }
+        </script>
+
+    </body>
+</html>
